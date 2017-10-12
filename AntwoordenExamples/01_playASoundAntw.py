@@ -18,21 +18,22 @@ An example project in which three wav files are played after eachother.
 """
 
 #load 3 audioFiles
-sampleHigh = sa.WaveObject.from_wave_file("../Examples/pythonExamples/audio/01_audioFiles/audioFiles/Pop.wav")
-sampleMid = sa.WaveObject.from_wave_file("../Examples/pythonExamples/audio/01_audioFiles/audioFiles/Laser1.wav")
-sampleLow = sa.WaveObject.from_wave_file("../Examples/pythonExamples/audio/01_audioFiles/audioFiles/Dog2.wav")
+sampleHigh = sa.WaveObject.from_wave_file("audioFiles/Pop.wav")
+sampleMid = sa.WaveObject.from_wave_file("audioFiles/Laser1.wav")
+sampleLow = sa.WaveObject.from_wave_file("audioFiles/Dog2.wav")
 
-x = True
+validchoice = False
+
 #ask for input
-while x:
-    choice = input("What sample would you like to hear? Type 1, 2 or 3. -> ")
-    if choice.isdigit():
+choice = input("What sample would you like to hear? Type 1, 2 or 3. -> ")
+while validchoice == False:
+    if choice.isdigit() and int(choice) < 4 and int(choice) > 0:
         choice = int(choice)
-        x = False
+        validchoice = True
 
     else:
         print("Please type 1, 2 or 3.")
-
+        choice = input("What sample would you like to hear? ")
 
 if choice == 1:
     #play high sample
@@ -51,7 +52,3 @@ if choice == 3:
     sampleLowPlay = sampleLow.play()
     #wait till sample is done playing
     #sampleLowPlay.wait_done()
-
-else :
-    print("Please type 1, 2 or 3.")
-    x = True
