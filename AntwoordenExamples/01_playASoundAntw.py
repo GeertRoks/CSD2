@@ -27,28 +27,23 @@ validchoice = False
 #ask for input
 choice = input("What sample would you like to hear? Type 1, 2 or 3. -> ")
 while validchoice == False:
-    if choice.isdigit() and int(choice) < 4 and int(choice) > 0:
+    if choice.isdigit() and int(choice) < 4 and int(choice) > 0: #check for the right answer
         choice = int(choice)
-        validchoice = True
+        validchoice = True #Right anser is given
 
     else:
+        #answer is wrong
         print("Please type 1, 2 or 3.")
         choice = input("What sample would you like to hear? ")
 
 if choice == 1:
     #play high sample
     sampleHighPlay = sampleHigh.play()
-    #wait till sample is done playing
-    #sampleHighPlay.wait_done()
 
 if choice == 2:
     #play mid sample
     sampleMidPlay = sampleMid.play()
-    #wait till sample is done playing
-    #sampleMidPlay.wait_done()
 
 if choice == 3:
     #play low sample
     sampleLowPlay = sampleLow.play()
-    #wait till sample is done playing
-    #sampleLowPlay.wait_done()
