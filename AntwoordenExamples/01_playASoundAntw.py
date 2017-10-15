@@ -26,9 +26,9 @@ validchoice = False
 
 #ask for input
 choice = input("What sample would you like to hear? Type 1, 2 or 3. -> ")
+int (choice)
 while validchoice == False:
-    if choice.isdigit() and int(choice) < 4 and int(choice) > 0: #check for the right answer
-        choice = int(choice)
+    if choice.isdigit() and choice < 4 and choice > 0: #check for the right answer
         validchoice = True #Right anser is given
 
     else:
