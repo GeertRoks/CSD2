@@ -26,17 +26,16 @@ samples = [ sa.WaveObject.from_wave_file("audioFiles/Pop.wav"),
 
 #initialise values
 rndtime = 0
-validchoice = False
 
 #Choice loop
-while validchoice == False:
+while True:
     repeatvalue = input("How many times would you like to hear the samples? -> ")
     if repeatvalue.isdigit() and int(repeatvalue) >= 1:
         repeatvalue = int(repeatvalue)
-        validchoice = True
+        break
     else:
         print("Invalid answer. Please type any of the natural numbers except for zero.")
-        validchoice = False
+        continue
 
 #Sample play loop
 for repeatvalue in range (0, repeatvalue):
