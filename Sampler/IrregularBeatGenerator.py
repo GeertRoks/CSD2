@@ -1,6 +1,6 @@
 import simpleaudio as sa
 import time
-
+import BeatGenerating as bg
 
 
 #input questions
@@ -38,6 +38,7 @@ while True:
     else:
         print("Invalid response. Please enter a value between 40 and 300.")
 
+
     #drumkit TODO: Choose and download sample kits
 while True:
     print("1. First selcetion")     #jazz kit
@@ -74,9 +75,11 @@ else:
 events = []
 
 #TODO: Random beat generating
-Kick_seq =  [0, 4, 8, 11]      #Kick, snare and tom matrix
-Snare_seq = [2, 6, 12]      # 1 = play, 0 = silence
-Tom_seq =   [13, 14, 15, 16]
+Kick_seq =  bg.KickGen([0, 8])
+Snare_seq = [2, 6, 12]      #number represents place in grid
+Tom_seq =   [12, 13, 14, 15,]
+
+print(Kick_seq)
 
 #transform the sixteenthNoteSequece to an eventlist with time values
 for sixteenIndex in Kick_seq:
