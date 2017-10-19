@@ -10,30 +10,31 @@ while True:
         timesig = input("What time signiture would you like to hear? --> ")
         timesig = timesig.strip().split("/") #timesig is now a list with [beats, count]
 
-        beatsPerMeasure = int(timesig[0])
-        if beatsPerMeasure < 2 or  beatsPerMeasure > 12:    #Check Beats per meassure
-            print("Invalid beats per measure. The amount of beats per measure should be between 2 and 12.")
-            continue
-
-        beatUnit = int(timesig[1])
-        if beatUnit == 2 or beatUnit == 4 or beatUnit == 8 or beatUnit == 16: #Check Beat Unit
-            break
-        else:
+        beatUnit = int(timesig[1]) #Check Beat Unit
+        if beatUnit != 2 and beatUnit != 4 and beatUnit != 8 and beatUnit != 16:
             print("Invalid beat unit. The beat unit has to be 2, 4, 8 or 16. Please enter one of the valid options.")
             continue
-    except ValueError:
+
+        beatsPerMeasure = int(timesig[0])  #Check Beats per meassure
+        if beatsPerMeasure < 2 or  beatsPerMeasure > 12:
+            print("Invalid beats per measure. The amount of beats per measure should be between 2 and 12.")
+            continue
+        else:
+            break
+
+    except:
         print("Invalid time signiture. Please enter a valid time signiture. For example: 7/8")
         continue
-
 
     #bpm
 while True:
     bpm = input("How many beats per minute? --> ")
     if bpm.isdigit() and int(bpm) >= 40 and int(bpm) <= 300:
         bpm = int(bpm)
-        beatInterval = (240/beatUnit)/(bpm) #bpm conversion, interval for quarter notes
+        beatInterval = (240/beatUnit)/(bpm) #bpm conversion, interval for beatUnit
         sixteenInterval = 15/(bpm) #interval of a sixteenth note
         measureInterval = beatsPerMeasure  * beatInterval #interval of a measure
+        amountOfSixteenths = beatsPerMeasure * (16/beatUnit)
         break
     else:
         print("Invalid response. Please enter a value between 40 and 300.")
@@ -75,11 +76,12 @@ else:
 events = []
 
 #TODO: Random beat generating
-Kick_seq =  bg.KickGen([0, 8])
-Snare_seq = [2, 6, 12]      #number represents place in grid
-Tom_seq =   [12, 13, 14, 15,]
+Kick_seq =  bg.KickGen([0, 8], amountOfSixteenths)
+Snare_seq = bg.SnareGen(Kick_seq, amountOfSixteenths)      #number represents place in grid
+Tom_seq =   []
 
 print(Kick_seq)
+print(Snare_seq)
 
 #transform the sixteenthNoteSequece to an eventlist with time values
 for sixteenIndex in Kick_seq:
@@ -103,10 +105,17 @@ while True:
 
         if events:  #if there are events left in the events list
             event = events.pop(0)
-        else:   #list is empty, refill
-            events = list(copyEvents)
-            event = events.pop(0)
-            t0 = time.time()
+        else:   #list is empty, wait untill measure is done, then refill
+            while True:
+                currentTime = time.time()
+                if currentTime - t0 >= measureInterval:
+                    events = list(copyEvents)
+                    event = events.pop(0)
+                    t0 = time.time()
+                    break
+                else:
+                    time.sleep(0.01)
+                    continue
 
     else:
         time.sleep(0.01)
