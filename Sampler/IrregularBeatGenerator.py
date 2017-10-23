@@ -4,26 +4,27 @@ import BeatGenerating as bg
 
 
 #input questions
-    #time signiture
+    #time signature
 while True:
     try:
-        timesig = input("What time signiture would you like to hear? --> ")
+        timesig = input("What time signature would you like to hear? --> ")
         timesig = timesig.strip().split("/") #timesig is now a list with [beats, count]
 
         beatUnit = int(timesig[1]) #Check Beat Unit
         if beatUnit != 2 and beatUnit != 4 and beatUnit != 8 and beatUnit != 16:
-            print("Invalid beat unit. The beat unit has to be 2, 4, 8 or 16. Please enter one of the valid options.")
+            print("Invalid beat unit. The beat unit has to be 2, 4, 8 or 16. Please enter one of the valid options. \n")
             continue
 
         beatsPerMeasure = int(timesig[0])  #Check Beats per meassure
         if beatsPerMeasure < 2 or  beatsPerMeasure > 12:
-            print("Invalid beats per measure. The amount of beats per measure should be between 2 and 12.")
+            print("Invalid beats per measure. The amount of beats per measure should be between 2 and 12.\n")
             continue
         else:
             break
 
     except:
-        print("Invalid time signiture. Please enter a valid time signiture. For example: 7/8")
+        print("Invalid time signature. Please enter a valid time signature. For example: 7/8 \n" )
+
         continue
 
     #bpm
@@ -42,7 +43,7 @@ while True:
 
     #drumkit TODO: Choose and download sample kits
 while True:
-    print("1. First selcetion")     #jazz kit
+    print("1. First selection")     #jazz kit
     print("2. Second selection")    #Rock kit
     print("3. Third selection")     #808
     print("4. Fourth Selection")    #African?

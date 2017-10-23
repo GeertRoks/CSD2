@@ -23,3 +23,12 @@ def SnareGen(kseq, amountOfSixteenths):
         seq.append(rndnote)
     seq = sorted(seq)
     return seq
+
+def HiHatGen(amountOfSixteenths):
+    seq = []
+    for i in range(0, amountOfSixteenths):
+        seq.append(i)
+    seq = sorted(seq)
+
+HiHat_seq = HiHatGen(20)
+print(HiHat_seq)
