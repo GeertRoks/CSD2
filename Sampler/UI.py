@@ -33,13 +33,14 @@ def timeSig():  #input for Time signature
             elif beatsPerMeasure > 3 and beatUnit == 2:
                 print("Longest possible time signature is 6/4 or 3/2.\n")
             else:
+                amountOfSixteenths = beatsPerMeasure * int(16/beatUnit)
                 break
 
         except:
             print("Invalid time signature. Please enter a valid time signature. For example: 7/8 \n" )
 
             continue
-    return beatsPerMeasure, beatUnit
+    return beatsPerMeasure, beatUnit, amountOfSixteenths
 
 
 
@@ -51,11 +52,10 @@ def BPM(beatsPerMeasure, beatUnit): #input for bpm + calculation
             beatInterval = (240/beatUnit)/(bpm) #bpm conversion, interval for beatUnit
             sixteenInterval = 15/(bpm) #interval of a sixteenth note
             measureInterval = beatsPerMeasure  * beatInterval #interval of a measure
-            amountOfSixteenths = beatsPerMeasure * int(16/beatUnit)
             break
         else:
             print("Invalid response. Please enter a value between 40 and 300.\n")
-    return measureInterval, sixteenInterval, amountOfSixteenths
+    return measureInterval, sixteenInterval
 
 
 
