@@ -11,6 +11,7 @@ import MakeMidi as midi
 
 #TODO: Clean up code, add comments
 
+global beatsPerMeasure, beatUnit, amountOfSixteenths, measureInterval, sixteenInterval, samples, events, copyEvents
 
 #functions
 def startUp():
@@ -24,6 +25,7 @@ def shutDown():
 
 
 def timeSig():  #input for Time signature
+    global beatsPerMeasure, beatUnit, amountOfSixteenths
     while True:
         try:
             timesig = input("What time signature would you like to hear? --> ")
@@ -38,11 +40,11 @@ def timeSig():  #input for Time signature
             if beatsPerMeasure < 2 or  beatsPerMeasure > 12:
                 print("Invalid beats per measure. The amount of beats per measure should be between 2 and 12.\n")
                 continue
-            elif beatsPerMeasure < 6 and beatUnit == 16:
+            elif beatsPerMeasure < 6 and beatUnit == 16:                        #expell short measures
                 print("Shortest possible time signature is 6/16 or 3/8.\n")
             elif beatsPerMeasure == 2 and beatUnit == 8:
                 print("Shortest possible time signature is 6/16 or 3/8.\n")
-            elif beatsPerMeasure > 6 and beatUnit == 4:
+            elif beatsPerMeasure > 6 and beatUnit == 4:                         #expell long measures
                 print("Longest possible time signature is 6/4 or 3/2.\n")
             elif beatsPerMeasure > 3 and beatUnit == 2:
                 print("Longest possible time signature is 6/4 or 3/2.\n")
@@ -58,7 +60,8 @@ def timeSig():  #input for Time signature
 
 
 
-def BPM(beatsPerMeasure, beatUnit): #input for bpm + calculation
+def BPM(): #input for bpm + calculation
+    global beatsPerMeasure, beatUnit, measureInterval, sixteenInterval, bpm
     while True:
         bpm = input("How many beats per minute? --> ")
         if bpm.isdigit() and int(bpm) >= 40 and int(bpm) <= 300:
@@ -74,6 +77,7 @@ def BPM(beatsPerMeasure, beatUnit): #input for bpm + calculation
 
 
 def drumkitSelection():
+    global samples
     while True:
         print("1. First selection")     #jazz kit
         print("2. Second selection")    #Rock kit
@@ -108,7 +112,8 @@ def drumkitSelection():
 
 
 #Kick Generator
-def KickGen(amountOfSixteenths):
+def KickGen():
+    global amountOfSixteenths
     #choose how many kicks per measure
     rndchoice = random.randint(0, 8)
     x = 0
@@ -150,12 +155,13 @@ def KickGen(amountOfSixteenths):
 
 
 #Snare Generator
-def SnareGen(kseq, amountOfSixteenths):
+def SnareGen():
+    global amountOfSixteenths, Kick_seq
     seq = []
     for i in range(0, 3):       #generate 3 snares
         while True:
             rndnote = random.randint(0, (amountOfSixteenths - 1))
-            if rndnote in kseq or rndnote in seq:       #check if already Kick or snare is played
+            if rndnote in Kick_seq or rndnote in seq:       #check if already Kick or snare is played
                 continue
             else:
                 break
@@ -165,7 +171,8 @@ def SnareGen(kseq, amountOfSixteenths):
 
 
 #HiHat Generator
-def HiHatGen(amountOfSixteenths):
+def HiHatGen():
+    global amountOfSixteenths
     seq = []
     rndchoice = random.randint(0, 3)
     if rndchoice == 0:  #sixteenth not HiHat
@@ -185,20 +192,22 @@ def HiHatGen(amountOfSixteenths):
     return seq
 
 #Beat Generating
-def GenerateBeat(amountOfSixteenths):
+def GenerateBeat():
+    global amountOfSixteenths, Kick_seq, Snare_seq, HiHat_seq
     #TODO: Improve snare algorithm
-    Kick_seq =  bg.KickGen(amountOfSixteenths)
-    Snare_seq = bg.SnareGen(Kick_seq, amountOfSixteenths)
-    HiHat_seq =  bg.HiHatGen(amountOfSixteenths)
+    Kick_seq  = KickGen()
+    Snare_seq = SnareGen()
+    HiHat_seq = HiHatGen()
 
-    print(Kick_seq)
-    print(Snare_seq)
-    print(HiHat_seq)
+    print("Kick Sequence:  " + str(Kick_seq))
+    print("Snare Sequence: " + str(Snare_seq))
+    print("Hihat Sequence: " + str(HiHat_seq))
 
     return Kick_seq, Snare_seq, HiHat_seq
 
 #Transfer random beat to an Event list
-def EventList(sixteenInterval, Kick_seq, Snare_seq, HiHat_seq):
+def EventList():
+    global sixteenInterval, Kick_seq, Snare_seq, HiHat_seq
     events = []
 
     #transform the sixteenthNoteSequece to an eventlist with time values
@@ -216,16 +225,22 @@ def EventList(sixteenInterval, Kick_seq, Snare_seq, HiHat_seq):
 
 #PlaybackThread
 def PlaybackThread():
-    global events, samples, measureInterval
+    global events, samples, measureInterval, copyEvents
 
     #Playback init
     copyEvents = list(events) #events copy for repeating
     event = events.pop(0)
     t0 = time.time()    #save starting time for refrence
+    print(events)
+    print(copyEvents)
+
     while True:
         currentTime = time.time()
         if currentTime - t0 >= event[0]: #Check if it's time to play a sample
-            samples[event[1]].play()
+            if samples[event[1]] == 2:  #seperate play() for hihat, so polyphony is possible
+                samples[2].play()
+            else:                       #play() for Kick and Snare
+                samples[event[1]].play()
 
             if events:  #if there are events left in the events list
                 event = events.pop(0)
@@ -248,22 +263,20 @@ def PlaybackThread():
 
 startUp()
 
-#global beatsPerMeasure,beatUnit, amountOfSixteenths, measureInterval, sixteenInterval, samples, events
-
 #input questions
     #time signature
-beatsPerMeasure, beatUnit, amountOfSixteenths = timeSig()
+timeSig()
 
     #bpm
-measureInterval, sixteenInterval, bpm = BPM(beatsPerMeasure, beatUnit)
+BPM()
 
     #drumkit TODO: Choose and download sample kits
-samples = drumkitSelection()
+drumkitSelection()
 
 
 #Beat Generating
-Kick_seq, Snare_seq, HiHat_seq = GenerateBeat(amountOfSixteenths)
-events = EventList(sixteenInterval, Kick_seq, Snare_seq, HiHat_seq)
+GenerateBeat()
+events = EventList()
 
 #Input Thread during playback
 #TODO: rewrite threading/code so variables can be adjusted.
@@ -275,7 +288,7 @@ except:
 
 # Loop checking for user input
 while True:
-
+    global copyEvents
     # Wait for keyboard input
     userInput = input("> ")
 
@@ -283,8 +296,10 @@ while True:
     userInput = userInput.split(" ")
 
     #Generate new
-    if userInput[0].lower() == "new":
-        pass
+    if userInput[0].lower() == "gen":
+        print("Freshly generated beat plays when current beat is done. ")
+        GenerateBeat()
+        copyEvents = EventList()
 
     #Make midi
     elif userInput[0].lower() == "midi":
@@ -292,22 +307,23 @@ while True:
             name = userInput[1]
             midi.MakeMidi(name, amountOfSixteenths, sixteenInterval, bpm, beatsPerMeasure, beatUnit, Kick_seq, Snare_seq, HiHat_seq)
         else:
-            print("Invalid name. Please write: 'midi <name>'. No  ")
+            print("Invalid name. Please write: 'midi <name>'. No spaces in name. ")
 
      # BPM
     elif userInput[0].lower() == "bpm":
-        print(measureInterval,sixteenInterval)
-        print(events)
-        measureInterval, sixteenInterval= BPM(beatsPerMeasure, beatUnit)
-        events = EventList(sixteenInterval, Kick_seq, Snare_seq, HiHat_seq)
-        print(measureInterval,sixteenInterval)
-        print(events)
-
+        BPM()
+        copyEvents = EventList()
 
     # Exit program
     elif userInput[0].lower() == "exit" or userInput[0].lower() == "quit":
         shutDown()
 
+    #timesig
+    elif userInput[0].lower() == "timesig":
+        timeSig()
+        GenerateBeat()
+        copyEvents = EventList()
+
     # Command not recognized
     else:
-        print(" ".join(userInput),"not recognized, type help for an overview of all commands \n")
+        print(" ".join(userInput),"not recognized, type help for an overview of all commands. \n")
