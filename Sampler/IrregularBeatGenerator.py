@@ -5,11 +5,22 @@ import sys
 import os
 import simpleaudio as sa
 
-import BeatGenerating as bg
-import UI
 import MakeMidi as midi
 
 #TODO: Clean up code, add comments
+"""
+****************Read Me****************
+
+To Marc and Ciska:
+
+Deze code is niet perfect, maar het werkt!
+De variabelen global doen is een tijdelijke oplossing, omdat
+Classes me nog niet goed lukt. Daarom staan alle functies in
+deze patch en niet meer in de andere losse patches.
+Deze sampler heeft alleen maar MakeMidi.py nodig om te werken.
+
+
+"""
 
 global beatsPerMeasure, beatUnit, amountOfSixteenths, measureInterval, sixteenInterval, samples, events, copyEvents
 
