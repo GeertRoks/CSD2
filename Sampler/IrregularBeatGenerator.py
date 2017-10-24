@@ -231,8 +231,6 @@ def PlaybackThread():
     copyEvents = list(events) #events copy for repeating
     event = events.pop(0)
     t0 = time.time()    #save starting time for refrence
-    print(events)
-    print(copyEvents)
 
     while True:
         currentTime = time.time()
@@ -278,8 +276,15 @@ drumkitSelection()
 GenerateBeat()
 events = EventList()
 
+print("\nCommands: Gen, midi, bpm, timesig, quit.\n")
+print("Gen      :   Generate new beat with current variables.")
+print("midi     :   Export current beat to a midi file.")
+print("bpm      :   Change bpm.")
+print("timesig  :   Change time signature.")
+print("quit     :   Exits program. \n")
+
 #Input Thread during playback
-#TODO: rewrite threading/code so variables can be adjusted.
+#TODO: Solve the problem that gives a long silence or cluster of samples after bpm of time sig is changed
 try:
    _thread.start_new_thread(PlaybackThread, ())
 except:
@@ -288,7 +293,7 @@ except:
 
 # Loop checking for user input
 while True:
-    global copyEvents
+    global copyEvents, measureInterval
     # Wait for keyboard input
     userInput = input("> ")
 
@@ -314,15 +319,18 @@ while True:
         BPM()
         copyEvents = EventList()
 
-    # Exit program
-    elif userInput[0].lower() == "exit" or userInput[0].lower() == "quit":
-        shutDown()
-
     #timesig
     elif userInput[0].lower() == "timesig":
         timeSig()
+        measureInterval = beatsPerMeasure  * (240/beatUnit)/(bpm)
         GenerateBeat()
         copyEvents = EventList()
+
+
+    # Exit program
+    elif userInput[0].lower() == "quit":
+        shutDown()
+
 
     # Command not recognized
     else:

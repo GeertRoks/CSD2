@@ -5,7 +5,7 @@ import math
 def MakeMidi(name, amountOfSixteenths, sixteenInterval, bpm, beatsPerMeasure, beatUnit, Kick_seq, Snare_seq, HiHat_seq):
 
     track    = 0
-    channel  = 10                                #used midi channel
+    channel  = 9                                #used midi channel
     time     = 0                                 #set time, in beats
     duration = 0.25                  #set duration in beats, 0.25 -> .../16 time signature
     bpm      = bpm                               #set bpm
