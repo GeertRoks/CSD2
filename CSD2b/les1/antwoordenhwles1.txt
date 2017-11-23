@@ -1,0 +1,25 @@
+- Zorgt dat data in en uit het programma kunnen. Dus
+    zodat je dingen kan invoeren in de commandline en
+    dan ook weer antwoorden daarop krijgt geprint in
+    de commandline.
+
+- /c/MinGW/lib/gcc/mingw32/6.3.0/include/c++/iostream
+
+- cout staat voor console out en is dus hetzelde als print
+    in python. Dit hoort bij iostream
+
+- << geeft de stream aan. Welk bericht gestreamd (verstuurd)
+    wordt naar bijvoorbeeld de cout.
+
+- std is de standaard namespace. Deze is van het systeem
+    zelf. :: is scoping, ofwel kijk in hetgeen erachter
+    van de namespace die ervoor staat. Je kan ook bovenaan
+    het script "using namespace std;" zetten. Dan kijkt
+    alles naar de std namespace.
+
+- functies moeten altijd een antwoord geven, dus ook
+    een uitkomst type. Als er geen antwoord terug verwacht
+    wordt, dan wordt vaak int main() gedaan en in de
+    main functie return 0; dan krijgt die sowieso iets
+    terug, maar er wordt niks mee gedaan.
+    

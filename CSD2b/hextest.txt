@@ -1,0 +1,4 @@
+hallo, dit is een test.
+Deze file wordt omgezet in een Hexfile en zal dat dan proberen te ontcijferen.
+Zal dit lukken?
+We'll find out...
