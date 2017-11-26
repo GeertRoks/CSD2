@@ -5,6 +5,7 @@ public:
   void setSound(std::string soundInput);
   void makeSound();
   void makeMultipleSounds(int numTimes);
+  void PlayofMusic();
 private:
   std::string mSoundInput;
 
