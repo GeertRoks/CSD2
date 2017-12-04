@@ -1,0 +1,6 @@
+__pychache__
+*.o
+*.exe
+
+testCSD/
+Examples/
