@@ -1,8 +1,10 @@
 
-#include <iostream>
 #include "synthesizer.h"
+#include "simpleSynth.h"
 
-int main
-{
+int main() {
+  SimpleSynth synth;
+  synth.process();
 
+  return 0;
 }

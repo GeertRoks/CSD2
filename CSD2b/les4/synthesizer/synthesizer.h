@@ -1,18 +1,19 @@
 
+#ifndef SYNTHESIZER_H_
+#define SYNTHESIZER_H_
 
+#include <iostream>
 
-class Synthesizer
-{
+class Synthesizer {
 public:
   Synthesizer();
   ~Synthesizer();
 
-  void proces();
-
-private:
-  int outputBufferRef [];
+protected:
 
   float frequency;
   float amplitude;
 
 };
+
+#endif //SYNTHESIZER_H_

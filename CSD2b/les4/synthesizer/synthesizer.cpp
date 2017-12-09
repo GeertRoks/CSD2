@@ -1,17 +1,10 @@
 
 #include "synthesizer.h"
 
-Synthesizer::Synthesizer()
-{
-
+Synthesizer::Synthesizer() {
+  std::cout << "Synthesizer constructor" << std::endl;
 }
 
-Synthesizer::~Synthesizer()
-{
-
-}
-
-void proces()
-{
-
+Synthesizer::~Synthesizer() {
+  std::cout << "Synthesizer destructor" << std::endl;
 }
