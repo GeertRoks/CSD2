@@ -3,8 +3,8 @@
 #include "simpleSynth.h"
 
 int main() {
-  SimpleSynth synth;
+  SimpleSynth synth(44100);
   synth.process();
 
   return 0;
-}
+} //main()

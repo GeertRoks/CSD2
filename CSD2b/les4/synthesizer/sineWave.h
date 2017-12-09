@@ -8,8 +8,10 @@ public:
   SineWave();
   ~SineWave();
 
-  void getSample();
+  int getSample();
 
-};
+private:
+
+}; //class
 
 #endif //SINEWAVE_H_

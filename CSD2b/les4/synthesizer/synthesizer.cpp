@@ -1,10 +1,11 @@
 
 #include "synthesizer.h"
 
-Synthesizer::Synthesizer() {
-  std::cout << "Synthesizer constructor" << std::endl;
-}
-
+// Constructor/Destructor
+Synthesizer::Synthesizer(float SampleRate) {
+  std::cout << "Synthesizer || constructor" << std::endl;
+  sampleRate = SampleRate;
+}//Synthesizer()
 Synthesizer::~Synthesizer() {
-  std::cout << "Synthesizer destructor" << std::endl;
-}
+  std::cout << "Synthesizer || destructor" << std::endl;
+}//~Synthesizer()

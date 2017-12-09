@@ -6,17 +6,16 @@
 
 class SimpleSynth : public Synthesizer {
 public:
-  SimpleSynth();
+  SimpleSynth(float SampleRate);
   ~SimpleSynth();
 
   void process();
 
 private:
-  Oscillator osc;
+  //Oscillator osc;
   SineWave sine;
   int waveType;
-  int outputBuffer [];
 
-};
+}; //class
 
 #endif //_SIMPLESYNTH_H_

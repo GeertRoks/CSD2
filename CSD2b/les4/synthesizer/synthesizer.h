@@ -6,14 +6,14 @@
 
 class Synthesizer {
 public:
-  Synthesizer();
+  Synthesizer(float sampleRate);
   ~Synthesizer();
 
 protected:
-
   float frequency;
   float amplitude;
+  int sampleRate;
 
-};
+}; //class
 
 #endif //SYNTHESIZER_H_
