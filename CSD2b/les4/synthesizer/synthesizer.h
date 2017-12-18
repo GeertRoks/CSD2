@@ -10,7 +10,7 @@ public:
   ~Synthesizer();
 
   //audio process method
-  virtual void process(void *outputBuffer, int numSamples) = 0; //pure virtual (heeft geen implementatie nodig)
+  virtual void process(float *outputBuffer, int numSamples) = 0; //pure virtual (heeft geen implementatie nodig)
 
   void setSampleRate(int sampleRate);
 

@@ -2,10 +2,11 @@
 #include "simpleSynth.h"
 
 // Constructor/Destructor
+
 SimpleSynth::SimpleSynth() : Synthesizer() {
   std::cout << "SimpleSynth || constructor" << std::endl;
 
-  oscPointer = &sine //Default: sine as wavetype
+  oscPointer = &sine; //Default: sine as wavetype
 }//SimpleSynth()
 
 SimpleSynth::~SimpleSynth() {
@@ -16,9 +17,9 @@ SimpleSynth::~SimpleSynth() {
 
 //Functions
 
-void SimpleSynth::process() {
+void SimpleSynth::process(float *outputBuffer, int numSamples) {
   std::cout << "SimpleSynth || process()" << std::endl;
-  int sample = oscPointer.getSample();
+  float sample = oscPointer->getSample();
   std::cout << "SimpleSynth || sample value = " << sample << std::endl;
 }//process()
 
@@ -26,9 +27,11 @@ void SimpleSynth::setWaveType(int waveType) {
   switch (waveType) {
     case 0:
       oscPointer = &sine;
+      break;
     case 1:
       oscPointer = &square;
-    else:
-      std::std::cout << waveType << " is not valid waveType" << std::endl;
-  }
+      break;
+    default:
+      std::cout << "Error: " << waveType << " is not valid waveType" << std::endl;
+  }//switch()
 }//setWaveType()

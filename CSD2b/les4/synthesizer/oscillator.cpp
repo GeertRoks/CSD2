@@ -10,7 +10,16 @@ Oscillator::Oscillator() {
   phase = 0;
   phaseStep = 0;
 
-  setFreq(1000, this->sampleRate);
+  setFreq(1000, this->sampleRate); //Default: 1000 Hz as frequency.
+}//Oscillator()
+
+Oscillator::Oscillator(float freq) {
+  std::cout << "Oscillator || constructor" << std::endl;
+
+  phase = 0;
+  phaseStep = 0;
+
+  setFreq(freq, this->sampleRate);
 }//Oscillator()
 
 Oscillator::~Oscillator() {
@@ -20,7 +29,7 @@ Oscillator::~Oscillator() {
 
 
 //Functions
-void Oscillator::setFreq(int freq, int sampleRate) {
+void Oscillator::setFreq(float freq, int sampleRate) {
   std::cout << "Oscillator || setFreq()" << std::endl;
 
   this->freq = freq;
@@ -32,12 +41,6 @@ void Oscillator::setFreq(int freq, int sampleRate) {
 
   std::cout << "Oscillator || phaseStep = " << phaseStep << std::endl;
 }//setFreq()
-
-
-void Oscillator::getSample() {
-  std::cout << "Oscillator || getSample()" << std::endl;
-}//getSample()
-
 
 void Oscillator::tick() {
   std::cout << "Oscillator || tick()" << std::endl;

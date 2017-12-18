@@ -3,13 +3,13 @@
 #include "simpleSynth.h"
 
 int main() {
-  SimpleSynth synth();
-  synth.process();
+  float buffer [256];
+
+  SimpleSynth synth;
+  synth.process(buffer, 256);
 
   return 0;
 } //main()
-
-
 
 /*NOTE:
     TODO are in:
@@ -19,6 +19,5 @@ int main() {
     Pointers and polymorphism
 
     Draw a plan of concept
-
 
 */

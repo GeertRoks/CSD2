@@ -7,20 +7,21 @@
 class Oscillator {
 public:
   Oscillator();
+  Oscillator(float freq);
   ~Oscillator();
 
-  void setFreq(int freq, int sampleRate);
-  void setPhase();
-  void setWave(int waveType)
-  void getSample();
+  virtual float getSample() = 0;
   void tick();
+
+  void setFreq(float freq, int sampleRate);
+  void setWave(int waveType);
 
 protected:
   double phase;
   double phaseStep;
 
 private:
-  int mFreq;
+  float freq;
   int sampleRate;
 
 }; //class

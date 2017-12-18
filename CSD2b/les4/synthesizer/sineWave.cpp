@@ -14,7 +14,7 @@ SineWave::~SineWave() {
 
 //Functions
 
-int SineWave::getSample() {
+float SineWave::getSample() {
   std::cout << "SineWave || getSample()" << std::endl;
   return sin(phase);
 }//getSample()

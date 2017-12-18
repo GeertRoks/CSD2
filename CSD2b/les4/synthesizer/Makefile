@@ -1,5 +1,5 @@
-all: synthesizer.o simpleSynth.o oscillator.o sineWave.o main.o
-	g++ -o synthesizer synthesizer.o simpleSynth.o oscillator.o sineWave.o main.o
+all: synthesizer.o simpleSynth.o oscillator.o sineWave.o squareWave.o main.o
+	g++ -o synthesizer synthesizer.o simpleSynth.o oscillator.o sineWave.o squareWave.o main.o
 
 main.o: main.cpp
 	g++ -c main.cpp
@@ -15,3 +15,6 @@ oscillator.o: oscillator.cpp
 
 sineWave.o: sineWave.cpp
 	g++ -c sineWave.cpp
+
+squareWave.o: squareWave.cpp
+	g++ -c squareWave.cpp

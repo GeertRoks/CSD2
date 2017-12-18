@@ -8,7 +8,7 @@ public:
   SineWave();
   ~SineWave();
 
-  int getSample();
+  float getSample() override;
 
 private:
 

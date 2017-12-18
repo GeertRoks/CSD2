@@ -8,7 +8,7 @@ public:
   SquareWave();
   ~SquareWave();
 
-  void getSample();
+  float getSample() override;
 
 private:
 
