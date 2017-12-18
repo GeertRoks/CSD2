@@ -9,16 +9,19 @@ public:
   Oscillator();
   ~Oscillator();
 
-  void setFreq(int Freq, int SampleRate);
-  //void getSample();
+  void setFreq(int freq, int sampleRate);
+  void setPhase();
+  void setWave(int waveType)
+  void getSample();
   void tick();
 
 protected:
-  float phase;
-  float phaseStep;
+  double phase;
+  double phaseStep;
 
 private:
-  int freq;
+  int mFreq;
+  int sampleRate;
 
 }; //class
 

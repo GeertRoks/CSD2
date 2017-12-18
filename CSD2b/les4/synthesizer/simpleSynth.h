@@ -6,15 +6,16 @@
 
 class SimpleSynth : public Synthesizer {
 public:
-  SimpleSynth(float SampleRate);
+  SimpleSynth();
   ~SimpleSynth();
 
-  void process();
+  void process(void *outputBuffer, int numSamples) override; //zorgt dat de compiler zoekt naar hetgeen wat hij moet overriden (alleen bij C++ 11). -std=c++11
+  void setWaveType(int waveType);
 
 private:
-  //Oscillator osc;
+  Oscillator *oscPointer;
   SineWave sine;
-  int waveType;
+  SquareWave square;
 
 }; //class
 

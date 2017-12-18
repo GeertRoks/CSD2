@@ -9,28 +9,40 @@ Oscillator::Oscillator() {
 
   phase = 0;
   phaseStep = 0;
-}
+
+  setFreq(1000, this->sampleRate);
+}//Oscillator()
+
 Oscillator::~Oscillator() {
   std::cout << "Oscillator || destructor" << std::endl;
-}
+}//~Oscillator()
+
+
 
 //Functions
 void Oscillator::setFreq(int freq, int sampleRate) {
   std::cout << "Oscillator || setFreq()" << std::endl;
 
-  phaseStep = (2 * M_PIl * freq) / sampleRate;
+  this->freq = freq;
+  this->sampleRate = sampleRate;
+
+  //Refrence: http://basicsynth.com/index.php?page=basic
+
+  phaseStep = (2 * M_PIl / this->sampleRate) * this->freq;
 
   std::cout << "Oscillator || phaseStep = " << phaseStep << std::endl;
-  std::cout << "Oscillator || freq = " << freq << std::endl;
-}
-/*
+}//setFreq()
+
+
 void Oscillator::getSample() {
   std::cout << "Oscillator || getSample()" << std::endl;
 }//getSample()
-*/
+
+
 void Oscillator::tick() {
   std::cout << "Oscillator || tick()" << std::endl;
 
   phase = fmod((phase + phaseStep), 2 * M_PIl);
-    std::cout << "Oscillator || phase = " << phase << std::endl;
+
+  std::cout << "Oscillator || phase = " << phase << std::endl;
 }//tick()
