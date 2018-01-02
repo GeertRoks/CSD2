@@ -1,21 +1,23 @@
-#ifndef _INSTRUMENT_H_
-#define _INSTRUMENT_H_
+#ifndef INSTRUMENT_H_
+#define INSTRUMENT_H_
+
 #include <string>
 
-class Instrument
-{
+class Instrument {
 public:
-  Instrument(std::string soundInput);
-  void setSound(std::string soundInput);
-  void makeSound();
-  void pitchRange(std::string pitchrange);
-  void timbre(std::string timbre);
+  Instrument();
+  ~Instrument();
 
-private:
-  std::string mSound;
-  std::string mPitchrange;
-  std::string mTimbre;
+  void makeSound();
+  void setSound(std::string soundInput);
+  void setPitchrange(std::string pitchrange);
+  void setTimbre(std::string timbre);
+
+protected:
+  std::string sound;
+  std::string pitchrange;
+  std::string timbre;
 
 };
 
-#endif //_INSTRUMENT_H_
+#endif //INSTRUMENT_H_

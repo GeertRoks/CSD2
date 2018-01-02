@@ -1,15 +1,15 @@
-#ifndef _STRINGINST_H_
-#define _STRINGINST_H_
+#ifndef STRINGINST_H_
+#define STRINGINST_H_
 
 #include "instrument.h"
 
-class StringInst : public Instrument
-{
+class StringInst : public Instrument {
 public:
-  StringInst(std::string soundInput);
+  StringInst();
+  ~StringInst();
 
 private:
 
 };
 
-#endif //_STRINGINST_H_
+#endif //STRINGINST_H_

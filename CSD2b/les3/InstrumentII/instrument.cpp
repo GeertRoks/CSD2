@@ -1,28 +1,28 @@
+
 #include <iostream>
 #include "instrument.h"
 
-Instrument::Instrument(std::string soundInput)
-{
-  setSound(soundInput);
+Instrument::Instrument() {
+
 }
 
-void Instrument::setSound(std::string soundInput)
-{
-  mSound = soundInput;
-  makeSound();
+Instrument::~Instrument() {
+
 }
 
-void Instrument::makeSound()
-{
-  std::cout << mSound << std::endl;
+void Instrument::makeSound() {
+  std::cout << this->sound << std::endl;
 }
 
-void Instrument::pitchRange(std::string pitchrange)
-{
-  std::cout << pitchrange << std::endl;
+
+void Instrument::setSound(std::string soundInput) {
+  this->sound = soundInput;
 }
 
-void Instrument::timbre(std::string timbre)
-{
-  std::cout << timbre << std::endl;
+void Instrument::setPitchrange(std::string pitchrange) {
+  std::cout << this->pitchrange << std::endl;
+}
+
+void Instrument::setTimbre(std::string timbre) {
+  std::cout << this->timbre << std::endl;
 }

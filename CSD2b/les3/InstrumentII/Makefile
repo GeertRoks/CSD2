@@ -1,5 +1,5 @@
-all: main.o instrument.o wind.o stringInst.o
-	g++ -o instrumentII main.o instrument.o wind.o stringInst.o
+all: main.o instrument.o wind.o stringInst.o fluit.o
+	g++ -o instrumentII main.o instrument.o wind.o stringInst.o fluit.o
 
 main.o: main.cpp
 	g++ -c main.cpp
@@ -12,3 +12,6 @@ wind.o: wind.cpp
 
 stringInst.o: stringInst.cpp
 	g++ -c stringInst.cpp
+
+fluit.o: fluit.cpp
+	g++ -c fluit.cpp

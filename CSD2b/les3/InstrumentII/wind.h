@@ -1,15 +1,17 @@
-#ifndef _WIND_H_
-#define _WIND_H_
+#ifndef WIND_H_
+#define WIND_H_
 
 #include "instrument.h"
 
-class Wind : public Instrument
-{
+class Wind : public Instrument {
 public:
-  Wind(std::string soundInput);
+  Wind();
+  ~Wind();
 
-private:
+  //makesound();
+  setSound(std::string sound);
+  setPitchrange(std::string pitchrange);
 
 };
 
-#endif //_WIND_H_
+#endif //WIND_H_
