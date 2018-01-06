@@ -6,17 +6,30 @@
 class Instrument {
 public:
   Instrument();
+  Instrument(std::string name);
   ~Instrument();
 
   void makeSound();
-  void setSound(std::string soundInput);
-  void setPitchrange(std::string pitchrange);
-  void setTimbre(std::string timbre);
+  void playSound();
+  void playNote();
+
+  void setSound(std::string sound);
+  void setPitchrange(int minPitchrange, int maxPitchrange);
+
+  void getSound();
+  void getTimbre();
+  void getPitchrange();
 
 protected:
-  std::string sound;
-  std::string pitchrange;
   std::string timbre;
+  std::string type;
+
+private:
+  std::string sound;
+  int minPitchrange;
+  int maxPitchrange;
+
+  std::string name;
 
 };
 

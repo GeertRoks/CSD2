@@ -1,5 +1,5 @@
-all: main.o instrument.o wind.o stringInst.o fluit.o
-	g++ -o instrumentII main.o instrument.o wind.o stringInst.o fluit.o
+all: instrument.o keys.o strings.o brass.o main.o
+	g++ -o instrumentII instrument.o keys.o strings.o brass.o main.o
 
 main.o: main.cpp
 	g++ -c main.cpp
@@ -7,11 +7,11 @@ main.o: main.cpp
 instrument.o: instrument.cpp
 	g++ -c instrument.cpp
 
-wind.o: wind.cpp
-	g++ -c wind.cpp
+keys.o: keys.cpp
+	g++ -c keys.cpp
 
-stringInst.o: stringInst.cpp
-	g++ -c stringInst.cpp
+strings.o: strings.cpp
+	g++ -c strings.cpp
 
-fluit.o: fluit.cpp
-	g++ -c fluit.cpp
+brass.o: brass.cpp
+	g++ -c brass.cpp
