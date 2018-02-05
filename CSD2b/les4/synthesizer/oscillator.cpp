@@ -1,7 +1,6 @@
 
 #include "oscillator.h"
 
-# define M_PIl          3.141592653589793238462643383279502884L /* pi */
 
 // Constructor/Destructor
 Oscillator::Oscillator() {
@@ -10,7 +9,7 @@ Oscillator::Oscillator() {
   phase = 0;
   phaseStep = 0;
 
-  setFreq(1000, this->sampleRate); //Default: 1000 Hz as frequency.
+  //setFreq(1000, this->sampleRate); //Default: 1000 Hz as frequency.
 }//Oscillator()
 
 Oscillator::Oscillator(float freq) {
@@ -35,9 +34,11 @@ void Oscillator::setFreq(float freq, int sampleRate) {
   this->freq = freq;
   this->sampleRate = sampleRate;
 
+  std::cout << "freq: " << this->freq << ", Samplerate: " << this->sampleRate << std::endl;
+
   //Refrence: http://basicsynth.com/index.php?page=basic
 
-  phaseStep = (2 * M_PIl / this->sampleRate) * this->freq;
+  phaseStep = (twoPi / this->sampleRate) * this->freq;
 
   std::cout << "Oscillator || phaseStep = " << phaseStep << std::endl;
 }//setFreq()
@@ -45,7 +46,7 @@ void Oscillator::setFreq(float freq, int sampleRate) {
 void Oscillator::tick() {
   std::cout << "Oscillator || tick()" << std::endl;
 
-  phase = fmod((phase + phaseStep), 2 * M_PIl);
+  phase = fmod((phase + phaseStep), twoPi);
 
   std::cout << "Oscillator || phase = " << phase << std::endl;
 }//tick()

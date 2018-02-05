@@ -19,8 +19,11 @@ SimpleSynth::~SimpleSynth() {
 
 void SimpleSynth::process(float *outputBuffer, int numSamples) {
   std::cout << "SimpleSynth || process()" << std::endl;
-  float sample = oscPointer->getSample();
-  std::cout << "SimpleSynth || sample value = " << sample << std::endl;
+  for (int i = 0; i < numSamples; i++) {
+    outputBuffer[i] = oscPointer->getSample() * getVolume();
+    oscPointer->tick();
+  }
+
 }//process()
 
 void SimpleSynth::setWaveType(int waveType) {
@@ -35,3 +38,7 @@ void SimpleSynth::setWaveType(int waveType) {
       std::cout << "Error: " << waveType << " is not valid waveType" << std::endl;
   }//switch()
 }//setWaveType()
+
+void SimpleSynth::updatePitch(){
+  oscPointer->setFreq(getPitch(), getSampleRate());
+}

@@ -18,7 +18,7 @@ SquareWave::~SquareWave() {
 
 float SquareWave::getSample() {
   std::cout << "SquareWave || getSample" << std::endl;
-  if (phase >= 0 && phase < M_PIl) {
+  if (phase >= 0 && phase < M_PI) {
     return 1;
   } else {
     return -1;

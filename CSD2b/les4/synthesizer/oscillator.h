@@ -14,7 +14,7 @@ public:
   void tick();
 
   void setFreq(float freq, int sampleRate);
-  void setWave(int waveType);
+  //void setSampleRate(int sampleRate);
 
 protected:
   double phase;
@@ -23,6 +23,7 @@ protected:
 private:
   float freq;
   int sampleRate;
+  static constexpr double twoPi = 2 * M_PI;
 
 }; //class
 
