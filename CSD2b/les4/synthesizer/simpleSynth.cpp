@@ -18,7 +18,7 @@ SimpleSynth::~SimpleSynth() {
 //Functions
 
 void SimpleSynth::process(float *outputBuffer, int numSamples) {
-  std::cout << "SimpleSynth || process()" << std::endl;
+  //std::cout << "SimpleSynth || process()" << std::endl;
   for (int i = 0; i < numSamples; i++) {
     outputBuffer[i] = oscPointer->getSample() * getVolume();
     oscPointer->tick();
@@ -40,5 +40,7 @@ void SimpleSynth::setWaveType(int waveType) {
 }//setWaveType()
 
 void SimpleSynth::updatePitch(){
-  oscPointer->setFreq(getPitch(), getSampleRate());
+  oscPointer->setFreq(mtof(getPitch()), getSampleRate());
+
+  std::cout << "mtof functie : " << mtof(getPitch()) << std::endl;
 }

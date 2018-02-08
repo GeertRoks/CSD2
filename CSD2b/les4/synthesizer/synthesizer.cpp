@@ -4,7 +4,6 @@
 // Constructor/Destructor
 Synthesizer::Synthesizer() {
   std::cout << "Synthesizer || constructor" << std::endl;
-  sampleRate = 44100; //Default: 44100Hz as sampleRate
 
 }//Synthesizer()
 
@@ -40,3 +39,12 @@ float Synthesizer::getVolume() {
 int Synthesizer::getSampleRate() {
   return this->sampleRate;
 }//getSampleRate()
+
+float Synthesizer::mtof(int pitch) {
+  //fm  =  2^((m−69)/12) * 440 Hz
+  //Refrence: https://newt.phys.unsw.edu.au/jw/notes.html
+  float macht = pow(2.0, (pitch - 69.0)/12.0);
+  std::cout << "Synthesizer || mtof(), macht = " << macht << std::endl;
+  return macht * 440;
+
+}//mtof()

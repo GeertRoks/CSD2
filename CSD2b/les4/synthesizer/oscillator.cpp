@@ -44,9 +44,9 @@ void Oscillator::setFreq(float freq, int sampleRate) {
 }//setFreq()
 
 void Oscillator::tick() {
-  std::cout << "Oscillator || tick()" << std::endl;
+//  std::cout << "Oscillator || tick()" << std::endl;
 
   phase = fmod((phase + phaseStep), twoPi);
 
-  std::cout << "Oscillator || phase = " << phase << std::endl;
+//  std::cout << "Oscillator || phase = " << phase << std::endl;
 }//tick()

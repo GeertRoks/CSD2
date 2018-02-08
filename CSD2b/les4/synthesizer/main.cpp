@@ -1,21 +1,42 @@
 
+#include <thread>
+#include "jack_module.h"
 #include "synthesizer.h"
 #include "simpleSynth.h"
 
 int main() {
-  float buffer [256];
+  //jackd -R -S -d portaudio -d "ASIO::ASIO4ALL v2"
 
   SimpleSynth synth;
   synth.setWaveType(0);
-  synth.setVolume(1);
-  synth. setPitch(440);
-  synth.process(buffer, 256);
+  synth.setVolume(0.25);
+  synth. setPitch(60);
+    //create a JackModule instance
+  JackModule jack;
 
-  std::cout << "Main || buffer = ";
-  for(size_t i = 256; i--;) {
-    std::cout << buffer[i] << " ,";
+  //assign a function to the JackModule::onProces
+  jack.onProcess = [&](jack_default_audio_sample_t *inBuf,
+     jack_default_audio_sample_t *outBuf, jack_nframes_t nframes, double samplerate) {
+    synth.process(outBuf, nframes);
+    return 0;
+  }; //onProces()
+
+  // init the jack, use program name as JACK client name
+  jack.init("Geert");
+  jack.autoConnect();
+
+  //keep the program running and listen for user input, q = quit
+  std::cout << "\n\nPress 'q' when you want to quit the program.\n";
+  bool running = true;
+  while (running)
+  {
+      switch (std::cin.get())
+      {
+          case 'q':
+            running = false;
+            break;
+      }
   }
-
 
   return 0;
 } //main()

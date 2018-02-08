@@ -3,6 +3,7 @@
 #define SYNTHESIZER_H_
 
 #include <iostream>
+#include <cmath>
 
 class Synthesizer {
 public:
@@ -16,13 +17,16 @@ public:
   void setVolume(float volume);
   void setSampleRate(int sampleRate);
   virtual void updatePitch() = 0; //NOTE Ciska voorstel
+
   float getPitch();
   float getVolume();
   int getSampleRate();
 
+  float mtof(int pitch);
+
 
 private:
-  float pitch = 440;
+  float pitch = 60;
   float volume = 0.5;
   int sampleRate = 44100;
 
