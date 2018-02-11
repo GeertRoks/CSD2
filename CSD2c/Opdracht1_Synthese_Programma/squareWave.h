@@ -10,8 +10,11 @@ public:
 
   float getSample() override;
 
-private:
+  void setPulseWidth(float pulseWidth);
+  float getPulseWidth();
 
+private:
+  float pulseWidth = 0.5;
 }; //class
 
 #endif //SQUAREWAVE_H_

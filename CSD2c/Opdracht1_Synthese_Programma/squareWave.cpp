@@ -18,9 +18,21 @@ SquareWave::~SquareWave() {
 
 float SquareWave::getSample() {
   //std::cout << "SquareWave || getSample" << std::endl;
-  if (phase >= 0 && phase < M_PI) {
+  if (phase >= 0 && phase < (2 * M_PI * pulseWidth)) {
     return 1;
   } else {
     return -1;
   }
-}
+} //getSample()
+
+void SquareWave::setPulseWidth(float pulseWidth) {
+  if (pulseWidth >= 0.5 && pulseWidth <= 0.99) {
+    this->pulseWidth = pulseWidth;
+  } else {
+    std::cout << pulseWidth << "is not a valid pulseWidth. Please choose a value from 0.5 until 0.99." << std::endl;
+  }
+}//setPulseWidth()
+
+float SquareWave::getPulseWidth(){
+  return this->pulseWidth;
+}//getPulseWidth()
