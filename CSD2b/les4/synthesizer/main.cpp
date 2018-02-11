@@ -8,7 +8,7 @@ int main() {
   //jackd -R -S -d portaudio -d "ASIO::ASIO4ALL v2"
 
   SimpleSynth synth;
-  synth.setWaveType(0);
+  synth.setWaveType(1);
   synth.setVolume(0.25);
   synth. setPitch(60);
     //create a JackModule instance
@@ -16,7 +16,7 @@ int main() {
 
   //assign a function to the JackModule::onProces
   jack.onProcess = [&](jack_default_audio_sample_t *inBuf,
-     jack_default_audio_sample_t *outBuf, jack_nframes_t nframes, double samplerate) {
+     jack_default_audio_sample_t *outBuf, jack_nframes_t nframes, double sampleRate) {
     synth.process(outBuf, nframes);
     return 0;
   }; //onProces()

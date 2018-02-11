@@ -43,8 +43,6 @@ int Synthesizer::getSampleRate() {
 float Synthesizer::mtof(int pitch) {
   //fm  =  2^((m−69)/12) * 440 Hz
   //Refrence: https://newt.phys.unsw.edu.au/jw/notes.html
-  float macht = pow(2.0, (pitch - 69.0)/12.0);
-  std::cout << "Synthesizer || mtof(), macht = " << macht << std::endl;
-  return macht * 440;
+  return pow(2.0, (pitch - 69.0)/12.0) * 440;
 
 }//mtof()
