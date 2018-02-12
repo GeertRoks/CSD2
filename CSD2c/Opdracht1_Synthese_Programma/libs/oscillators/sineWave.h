@@ -1,5 +1,5 @@
 #ifndef SINEWAVE_H_
-#define SINEWAVE_H_
+#define SINEWAVE_H_ 
 
 #include "oscillator.h"
 

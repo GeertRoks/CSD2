@@ -2,8 +2,8 @@
 #define SIMPLESYNTH_H_
 
 #include "synthesizer.h"
-#include "sineWave.h"
-#include "squareWave.h"
+#include "../oscillators/sineWave.h"
+#include "../oscillators/squareWave.h"
 
 class SimpleSynth : public Synthesizer {
 public:

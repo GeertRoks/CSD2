@@ -23,7 +23,7 @@ protected:
 private:
   float freq;
   int sampleRate;
-  static constexpr double twoPi = 2 * M_PI;
+  static constexpr double twoPi = 2 * 3.14159265358979323846;
 
 }; //class
 
