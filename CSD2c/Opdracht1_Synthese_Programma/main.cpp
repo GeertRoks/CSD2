@@ -2,16 +2,18 @@
 #include <thread>
 #include "libs/jack/jack_module.h"
 #include "libs/synthesizers/synthesizer.h"
-#include "libs/synthesizers/simpleSynth.h"
+#include "libs/synthesizers/subSynth.h"
 
 int main() {
   //jackd -R -S -d portaudio -d "ASIO::ASIO4ALL v2"
 
-  SimpleSynth synth;
-  synth.setWaveType(1);
+  SubSynth synth;
+  synth.setWaveType1(0);
+  synth.setWaveType2(0);
   synth.setVolume(0.25);
   synth.setPitch(60);
-    //create a JackModule instance
+ 
+  //create a JackModule instance
   JackModule jack;
 
   //assign a function to the JackModule::onProces
@@ -28,10 +30,8 @@ int main() {
   //keep the program running and listen for user input, q = quit
   std::cout << "\n\nPress 'q' when you want to quit the program.\n";
   bool running = true;
-  while (running)
-  {
-      switch (std::cin.get())
-      {
+  while (running) {
+      switch (std::cin.get()) {
           case 'q':
             running = false;
             break;
@@ -39,9 +39,17 @@ int main() {
           case 'a':
             synth.setPitch(60);
             break;
+          //w -> 61 - cis/des
+          case 'w':
+            synth.setPitch(61);
+            break;
           //s -> 62 - d
           case 's':
             synth.setPitch(62);
+            break;
+          //e -> 63 - dis/es
+          case 'e':
+            synth.setPitch(63);
             break;
           //d -> 64 - e
           case 'd':
@@ -51,13 +59,25 @@ int main() {
           case 'f':
             synth.setPitch(65);
             break;
+          //t -> 66 - fis/ges
+          case 't':
+            synth.setPitch(66);
+            break;
           //g -> 67 - g
           case 'g':
             synth.setPitch(67);
             break;
+          // y-> 68 - gis/as
+          case 'y':
+            synth.setPitch(68);
+            break;
           //h -> 69 - a
           case 'h':
             synth.setPitch(69);
+            break;
+          //u -> 70 - ais/bes
+          case 'u':
+            synth.setPitch(70);
             break;
           //j -> 71 - b
           case 'j':
@@ -67,19 +87,21 @@ int main() {
           case 'k':
             synth.setPitch(72);
             break;
-      }
-  }
+      }//switch
+  }//while
+
+  jack.end();
 
   return 0;
 } //main()
 
 /*NOTE:
     TODO are in:
-      - //NOTE Ciska voorstel updatePitch() virtual
+      - Check if working cleanly updatePitch()
       -
+      -
+      - Clean Up Code
+      - Comment Code
 
-    Pointers and polymorphism
-
-    Draw a plan of concept
 
 */

@@ -36,15 +36,7 @@ int JackModule::init()
 
 int JackModule::init(std::string clientName)
 {
-  //check if a function is assigned to onProcess
-  if(!onProcess) {
-    std::cout << "\n_____ EXIT PROGRAM _____\n"
-      << "The onProcess method is unassigned.\n"
-      << "You need to assign a (lambda) function to JackModule::onProcess.\n"
-      << "JackModule.onProcess will be called by the jack callback function.\n"
-      << "________________________\n\n";
-    exit(1);
-  }
+
 
   //open an external client session with a JACK server
   //options: use JackNullOption or JackNoStartServer
@@ -86,6 +78,17 @@ unsigned long JackModule::getSamplerate()
 
 void JackModule::autoConnect()
 {
+
+  //check if a function is assigned to onProcess
+  if(!onProcess) {
+    std::cout << "\n_____ EXIT PROGRAM _____\n"
+      << "The onProcess method is unassigned.\n"
+      << "You need to assign a (lambda) function to JackModule::onProcess.\n"
+      << "JackModule.onProcess will be called by the jack callback function.\n"
+      << "________________________\n\n";
+    exit(1);
+  }
+
   /*
    * Try auto-connect our output
    *

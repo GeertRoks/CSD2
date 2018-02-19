@@ -1,7 +1,7 @@
 
 #include "squareWave.h"
 
-# define M_PIl          3.141592653589793238462643383279502884L /* pi */
+//# define M_PIl          3.141592653589793238462643383279502884L /* pi */
 
 //Constructor/Destructor
 SquareWave::SquareWave() : Oscillator() {
@@ -12,13 +12,11 @@ SquareWave::~SquareWave() {
   std::cout << "SquareWave || Destructor" << std::endl;
 } //~SquareWave()
 
-
-
 //Functions
 
 float SquareWave::getSample() {
   //std::cout << "SquareWave || getSample" << std::endl;
-  if (phase >= 0 && phase < (2 * 3.14159265358979323846 * pulseWidth)) {
+  if (phase >= 0 && phase < (twoPi * pulseWidth)) {
     return 1;
   } else {
     return -1;

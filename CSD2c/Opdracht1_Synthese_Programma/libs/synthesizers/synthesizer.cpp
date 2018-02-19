@@ -17,7 +17,7 @@ Synthesizer::~Synthesizer() {
 
 void Synthesizer::setPitch(float pitch) {
   this->pitch = pitch;
-  updatePitch(); //NOTE Ciska voorstel
+  updatePitch(); //NOTE
 }//setPitch()
 
 void Synthesizer::setVolume(float volume) {
@@ -27,6 +27,12 @@ void Synthesizer::setVolume(float volume) {
 void Synthesizer::setSampleRate(int sampleRate) {
   this->sampleRate = sampleRate;
 } //setSampleRate()
+
+void Synthesizer::setPitchOffset(int pitchOffset) {
+  this->pitchOffset = pitchOffset;
+}//setCoarse()
+
+
 
 float Synthesizer::getPitch() {
   return this->pitch;
@@ -40,8 +46,13 @@ int Synthesizer::getSampleRate() {
   return this->sampleRate;
 }//getSampleRate()
 
+int Synthesizer::getPitchOffset() {
+  return this->pitchOffset;
+}//getCoarse()
+
+
+
 float Synthesizer::mtof(int pitch) {
-  //fm  =  2^((m−69)/12) * 440 Hz
   //Refrence: https://newt.phys.unsw.edu.au/jw/notes.html
   return pow(2.0, (pitch - 69.0)/12.0) * 440;
 

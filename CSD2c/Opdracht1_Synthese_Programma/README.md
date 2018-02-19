@@ -8,7 +8,7 @@ Command-linebased, hardwired, subtractive synthesizer met 2 oscillatoren en midi
   -	2 Oscillatoren
       -	Keuze uit waveforms: Sine, Square, Saw, (evt. Triangle en Noise)
       -	Squarewave heeft pulse width modulation
-  -	Midi input
+  -	Midi input (Class)
       -	Eerst in command line per noot (softwarematig).
       -	Onderzoeken of hardware aansturing ook mogelijk is. (monofoon)
       -	Note on’s en off’s (envelopes?)

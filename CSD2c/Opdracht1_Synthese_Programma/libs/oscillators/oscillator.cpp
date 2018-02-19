@@ -19,7 +19,7 @@ Oscillator::Oscillator(float freq) {
   phaseStep = 0;
 
   setFreq(freq, this->sampleRate);
-}//Oscillator()
+}//Oscillator(float)
 
 Oscillator::~Oscillator() {
   std::cout << "Oscillator || destructor" << std::endl;

@@ -19,11 +19,12 @@ public:
 protected:
   double phase;
   double phaseStep;
+  static constexpr double Pi = 3.14159265358979323846;
+  static constexpr double twoPi = 2 * Pi;
 
 private:
   float freq;
-  int sampleRate;
-  static constexpr double twoPi = 2 * 3.14159265358979323846;
+  int sampleRate; 
 
 }; //class
 
