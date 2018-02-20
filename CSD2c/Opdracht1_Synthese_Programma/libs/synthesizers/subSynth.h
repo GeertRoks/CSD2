@@ -7,7 +7,8 @@
 #include "../oscillators/squareWave.h"
 #include "../oscillators/sawWave.h"
 
-#include "../filters/filter.h"
+#include "../filters/lowPass.h"
+
 
 class SubSynth : public Synthesizer {
 public:
@@ -32,7 +33,8 @@ private:
   SawWave saw2;
 
   //filters
-  Filter filter;
+  LowPass lowpass;
+  Filter *filter = &lowpass;
 
 }; //class
 

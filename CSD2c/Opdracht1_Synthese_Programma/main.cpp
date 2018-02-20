@@ -8,16 +8,16 @@ int main() {
   //jackd -R -S -d portaudio -d "ASIO::ASIO4ALL v2"
 
   SubSynth synth;
-  synth.setWaveType1(0);
+  synth.setWaveType1(2);
   synth.setWaveType2(0);
   synth.setVolume(0.25);
   synth.setPitch(60);
- 
+
   //create a JackModule instance
   JackModule jack;
 
   //assign a function to the JackModule::onProces
-  jack.onProcess = [&](jack_default_audio_sample_t *inBuf,
+  jack.onProcess = [&synth](jack_default_audio_sample_t *inBuf,
      jack_default_audio_sample_t *outBuf, jack_nframes_t nframes, double sampleRate) {
     synth.process(outBuf, nframes);
     return 0;
@@ -97,10 +97,10 @@ int main() {
 
 /*NOTE:
     TODO are in:
-      - Check if working cleanly updatePitch()
+      - Check if updatePitch() is working cleanly
       -
       -
-      - Clean Up Code
+      - Clean Up/optimize Code
       - Comment Code
 
 
