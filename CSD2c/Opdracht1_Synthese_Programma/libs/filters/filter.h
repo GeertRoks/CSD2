@@ -10,7 +10,7 @@ public:
   void fillBuffer(float currentsample);
   void tick();
 
-  virtual float filterFunction() =0;
+  virtual float filterFunction(float currentsample) =0;
 
   void setCutOff(float cutOff);
   void setResonance(float resonance);

@@ -27,14 +27,17 @@ int main() {
   jack.init("Geert");
   jack.autoConnect();
 
-  //keep the program running and listen for user input, q = quit
-  std::cout << "\n\nPress 'q' when you want to quit the program.\n";
+  std::cout << "\n\nType 'h' to see all commands available.\n";
   bool running = true;
   while (running) {
       switch (std::cin.get()) {
           case 'q':
             running = false;
             break;
+
+          case 'h':
+            std::cout << "q, quit, exit => quit program." << std::endl;
+
           //a -> 60 - c
           case 'a':
             synth.setPitch(60);
@@ -89,8 +92,8 @@ int main() {
             break;
       }//switch
   }//while
-
-  jack.end();
+  std::cout << "main || end of while loop" << std::endl;
+  //jack.end();
 
   return 0;
 } //main()

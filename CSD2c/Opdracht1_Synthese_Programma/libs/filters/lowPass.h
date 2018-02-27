@@ -8,7 +8,7 @@ public:
   LowPass();
   ~LowPass();
 
-  float filterFunction() override;
+  float filterFunction(float currentsample) override;
 
 };//class
 

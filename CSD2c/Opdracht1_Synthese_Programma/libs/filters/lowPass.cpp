@@ -11,8 +11,8 @@ LowPass::~LowPass() {
   std::cout << "LowPass || destructor" << std::endl;
 }//~LowPass()
 
-float LowPass::filterFunction() {
-  float out;
-  out = filterBuffer[bufferIndex] + filterBuffer[bufferIndex - 1];
-  return out;
+float LowPass::filterFunction(float currentsample) {
+  fillBuffer(currentsample);
+  float filtered = (currentsample + filterBuffer[(bufferIndex - 1) % bufferLength]) * 0.5;
+  return filtered;
 }//filterFunction()

@@ -27,8 +27,7 @@ void SubSynth::process(float *outputBuffer, int numSamples) {
     sampleOsc2 = oscPointer2->getSample();
     out = (sampleOsc1 + sampleOsc2) * 0.5 * getVolume();
 
-    filter->fillBuffer(out);
-    filter->filterFunction();
+    out = filter->filterFunction(out);
     outputBuffer[i] = out;
     oscPointer1->tick();
     oscPointer2->tick();
@@ -47,6 +46,7 @@ void SubSynth::setWaveType1(int waveType) {
       break;
     case 2:
       oscPointer1 = &saw1;
+      break;
     default:
       std::cout << "Error: " << waveType << " is not valid waveType" << std::endl;
   }//switch()
@@ -62,6 +62,7 @@ void SubSynth::setWaveType2(int waveType) {
       break;
     case 2:
       oscPointer2 = &saw2;
+      break;
     default:
       std::cout << "Error: " << waveType << " is not valid waveType" << std::endl;
   }//switch()
