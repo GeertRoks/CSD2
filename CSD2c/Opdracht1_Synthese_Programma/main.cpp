@@ -8,7 +8,7 @@ int main() {
   //jackd -R -S -d portaudio -d "ASIO::ASIO4ALL v2"
 
   SubSynth synth;
-  synth.setWaveType1(2);
+  synth.setWaveType1(0);
   synth.setWaveType2(0);
   synth.setVolume(0.25);
   synth.setPitch(60);
@@ -34,10 +34,6 @@ int main() {
           case 'q':
             running = false;
             break;
-
-          case 'h':
-            std::cout << "q, quit, exit => quit program." << std::endl;
-
           //a -> 60 - c
           case 'a':
             synth.setPitch(60);
@@ -99,12 +95,17 @@ int main() {
 } //main()
 
 /*NOTE:
-    TODO are in:
-      - Check if updatePitch() is working cleanly
-      -
-      -
-      - Clean Up/optimize Code
-      - Comment Code
+    TODO:
+      functionality:
+        - realtime midi input
+        - realtime command input (thread)
+        - better filters
 
+      Checkup:
+        - Check if updatePitch() is working cleanly
+        - Check makefile dependencies. (It still compiles everything if one file changes)
 
+      Esthetics:
+        - Clean Up/optimize Code
+        - Comment Code
 */

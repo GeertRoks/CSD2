@@ -13,6 +13,7 @@ LowPass::~LowPass() {
 
 float LowPass::filterFunction(float currentsample) {
   fillBuffer(currentsample);
-  float filtered = (currentsample + filterBuffer[(bufferIndex - 1) % bufferLength]) * 0.5;
+  tick();
+  float filtered = (currentsample + filterBuffer[(bufferIndex - 1) % bufferLength]) / 2.0;
   return filtered;
 }//filterFunction()

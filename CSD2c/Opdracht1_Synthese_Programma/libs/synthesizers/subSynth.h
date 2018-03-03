@@ -8,6 +8,7 @@
 #include "../oscillators/sawWave.h"
 
 #include "../filters/lowPass.h"
+#include "../filters/highPass.h"
 
 
 class SubSynth : public Synthesizer {
@@ -34,6 +35,7 @@ private:
 
   //filters
   LowPass lowpass;
+  HighPass highpass;
   Filter *filter = &lowpass;
 
 }; //class

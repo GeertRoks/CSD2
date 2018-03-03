@@ -1,5 +1,5 @@
 
-#include "oscillators/sineWave.h"
+#include "sineWave.h"
 
 // Constructor/Destructor
 SineWave::SineWave() : Oscillator() {

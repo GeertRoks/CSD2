@@ -21,17 +21,16 @@ void SubSynth::process(float *outputBuffer, int numSamples) {
   //std::cout << "SubSynth || process()" << std::endl;
   float sampleOsc1;
   float sampleOsc2;
-  float out;
+  float out;  
   for (int i = 0; i < numSamples; i++) {
     sampleOsc1 = oscPointer1->getSample();
     sampleOsc2 = oscPointer2->getSample();
     out = (sampleOsc1 + sampleOsc2) * 0.5 * getVolume();
 
-    out = filter->filterFunction(out);
+    //out = filter->filterFunction(out);
     outputBuffer[i] = out;
     oscPointer1->tick();
     oscPointer2->tick();
-    filter->tick();
   }
 
 }//process()
