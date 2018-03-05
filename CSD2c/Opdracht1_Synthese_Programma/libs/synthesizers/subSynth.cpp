@@ -21,7 +21,7 @@ void SubSynth::process(float *outputBuffer, int numSamples) {
   //std::cout << "SubSynth || process()" << std::endl;
   float sampleOsc1;
   float sampleOsc2;
-  float out;  
+  float out;
   for (int i = 0; i < numSamples; i++) {
     sampleOsc1 = oscPointer1->getSample();
     sampleOsc2 = oscPointer2->getSample();
@@ -71,4 +71,4 @@ void SubSynth::updatePitch(){
   oscPointer1->setFreq(mtof(getPitch()), getSampleRate());
   oscPointer2->setFreq(mtof(getPitch() + getPitchOffset()), getSampleRate());
 
-}
+}//updatePitch()

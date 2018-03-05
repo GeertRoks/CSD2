@@ -4,7 +4,7 @@ LDFLAGS = -L"C:/Program Files (x86)/Jack/lib" -llibjack
 INCLUDE_PATH = libs/
 LIBS = libs/jack/ libs/synthesizers/
 
-build: synth jack main.cpp
+build: synth jack ui main.cpp
 	$(CC) main.cpp $(wildcard libraries/*) -I$(INCLUDE_PATH) -o synthesizer $(LDFLAGS)
 
 synth:
@@ -12,6 +12,9 @@ synth:
 
 jack:
 	cd libs/jack && $(MAKE)
+
+ui:
+	cd libs/ui && $(MAKE)
 
 clean:
 	rm -r libraries/*.o synthesizer

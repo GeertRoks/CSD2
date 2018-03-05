@@ -26,6 +26,6 @@ private:
   float cutOff = 1000;
   float resonance = 1;
 
-}; //class
+};//class
 
-#endif //FILTER_H_
+#endif//FILTER_H_

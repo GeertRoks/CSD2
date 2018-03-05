@@ -1,12 +1,11 @@
 
 #include <thread>
 #include "libs/jack/jack_module.h"
-#include "libs/synthesizers/synthesizer.h"
+#include "libs/ui/ui.h"
+//#include "libs/synthesizers/synthesizer.h"
 #include "libs/synthesizers/subSynth.h"
 
 int main() {
-  //jackd -R -S -d portaudio -d "ASIO::ASIO4ALL v2"
-
   SubSynth synth;
   synth.setWaveType1(0);
   synth.setWaveType2(0);
@@ -22,11 +21,16 @@ int main() {
     synth.process(outBuf, nframes);
     return 0;
   }; //onProces()
-
+ 
   // init the jack, use program name as JACK client name
   jack.init("Geert");
   jack.autoConnect();
 
+  UI input;
+  input.process();
+
+
+/*
   std::cout << "\n\nType 'h' to see all commands available.\n";
   bool running = true;
   while (running) {
@@ -88,6 +92,8 @@ int main() {
             break;
       }//switch
   }//while
+*/
+
   std::cout << "main || end of while loop" << std::endl;
   //jack.end();
 
