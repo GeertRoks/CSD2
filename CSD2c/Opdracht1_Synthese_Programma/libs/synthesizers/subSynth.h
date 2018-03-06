@@ -42,3 +42,9 @@ private:
 }; //class
 
 #endif //SubSynth_H_
+
+/* TODO:
+    - Make array of oscillators with all waveforms in it.
+    - combine setWaveType1 and setWaveType2 so it's modular for possibly more oscillators.
+    - develop setFreqcurve() function
+*/
