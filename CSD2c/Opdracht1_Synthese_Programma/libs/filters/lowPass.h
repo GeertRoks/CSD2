@@ -1,6 +1,10 @@
+/**
+  A simple lowpass filter based on filter.cpp
+*/
 #ifndef LOWPASS_H_
 #define LOWPASS_H_
 
+#include <iostream>
 #include "filter.h"
 
 class LowPass : public Filter {

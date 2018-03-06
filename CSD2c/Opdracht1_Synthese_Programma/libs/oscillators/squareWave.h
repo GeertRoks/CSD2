@@ -1,3 +1,6 @@
+/**
+  Simple non-bandlimited squarewave oscillator based on oscillator.cpp
+*/
 #ifndef SQUAREWAVE_H_
 #define SQUAREWAVE_H_
 
@@ -15,6 +18,6 @@ public:
 
 private:
   float pulseWidth = 0.5;
-}; //class
+};//class
 
-#endif //SQUAREWAVE_H_
+#endif//SQUAREWAVE_H_

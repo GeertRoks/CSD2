@@ -1,3 +1,6 @@
+/**
+  Simple non-bandlimited Sawtooth oscillator based on oscillator.cpp
+*/
 #ifndef SAWWAVE_H_
 #define SAWWAVE_H_
 
@@ -9,10 +12,6 @@ public:
   ~SawWave();
 
   float getSample() override;
+};//class
 
-
-private:
-
-}; //class
-
-#endif //SAWWAVE_H_
+#endif//SAWWAVE_H_

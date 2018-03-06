@@ -1,19 +1,17 @@
 
 #include "sawWave.h"
 
-//Constructor/Destructor
 SawWave::SawWave() : Oscillator() {
   std::cout << "SawWave || Constructor" << std::endl;
-} //SawWave()
+}//SawWave()
 
 SawWave::~SawWave() {
   std::cout << "SawWave || Destructor" << std::endl;
-} //~SawWave()
-
-//Functions
+}//~SawWave()
 
 float SawWave::getSample() {
-  //std::cout << "SawWave || getSample" << std::endl;
-
+/**
+  Function: Calculate the currentsample based the given phase.
+*/
   return (phase/Pi) - 1;
-} //getSample()
+}//getSample()

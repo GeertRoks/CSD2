@@ -1,3 +1,6 @@
+/**
+  Subtractive synthesizer. Derived from synthesizer.
+*/
 #ifndef SUBSYNTH_H_
 #define SUBSYNTH_H_
 
@@ -6,10 +9,8 @@
 #include "../oscillators/sineWave.h"
 #include "../oscillators/squareWave.h"
 #include "../oscillators/sawWave.h"
-
 #include "../filters/lowPass.h"
 #include "../filters/highPass.h"
-
 
 class SubSynth : public Synthesizer {
 public:

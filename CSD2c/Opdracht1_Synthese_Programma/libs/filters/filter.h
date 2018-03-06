@@ -1,7 +1,9 @@
+/**
+  Blueprint for filters based on a circular buffer.
+*/
 #ifndef FILTER_H_
 #define FILTER_H_
 
-//ringbuffer of circular buffer
 class Filter {
 public:
   Filter();
@@ -18,7 +20,7 @@ public:
   float getResonance();
 
 protected:
-  float *filterBuffer; //pointer naar filterarray
+  float *filterBuffer;                //pointer to filterarray
   unsigned char bufferLength = 8;
   unsigned char bufferIndex = 0;
 
@@ -29,3 +31,8 @@ private:
 };//class
 
 #endif//FILTER_H_
+
+/*TODO:
+    - implement some IIR filters.
+
+*/

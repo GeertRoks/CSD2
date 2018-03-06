@@ -1,5 +1,8 @@
+/**
+  Simple sinus oscillator based on oscillator.cpp
+*/
 #ifndef SINEWAVE_H_
-#define SINEWAVE_H_ 
+#define SINEWAVE_H_
 
 #include "oscillator.h"
 
@@ -9,9 +12,6 @@ public:
   ~SineWave();
 
   float getSample() override;
+};//class
 
-private:
-
-}; //class
-
-#endif //SINEWAVE_H_
+#endif//SINEWAVE_H_

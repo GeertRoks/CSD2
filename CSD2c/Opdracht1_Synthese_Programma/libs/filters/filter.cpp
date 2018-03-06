@@ -15,18 +15,16 @@ Filter::~Filter() {
 }//~Filter()
 
 void Filter::fillBuffer(float currentsample) {
+/**
+  Function: write currentsample into the filterBuffer.
+*/
   filterBuffer[bufferIndex] = currentsample;
-
-/*
-  std::cout << "filterBuffer = ";
-  for (int i = 0; i < bufferLength; i++) {
-    std::cout << filterBuffer[i] << ", ";
-  }
-  std::cout << "." << std::endl;
-  */
 }//fillBuffer()
 
 void Filter::tick() {
+/**
+  Function: Increase the buffer Index.
+*/
   bufferIndex++;
   bufferIndex = bufferIndex % bufferLength;
 }//tick()
