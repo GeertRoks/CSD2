@@ -14,6 +14,9 @@ void UI::UIprocess(SubSynth *subsynth) {
 /**
   Function: Routing the functions and keeping it looped.
 */
+std::cout << "Hi, welcome to my Subtractive Synthesizer." << std::endl;
+std::cout << "This is a commandline based synthesizer, you can give me commands by typing in the commandline." << std::endl;
+std::cout << "All the commands are visible if you type 'help'." << std::endl;
   while (running) {
     split(getInput());
     commands(subsynth);
@@ -35,35 +38,40 @@ void UI::commands(SubSynth *subsynth) {
 
   NOTE: switch would work better here, but switch doesn't work with strings.
 */
-  if (commandString[0] == "help") {               //help
-    std::cout << "help if statement" << std::endl;
-  }//if (help)
-
-  if (commandString[0] == "pitch") {              //pitch
-    subsynth->setPitch(std::stof(commandString[1]));
-  }//if (pitch)
-
-  if (commandString[0] == "osc2offset") {         //osc2offset
-    subsynth->setPitchOffset(std::stoi(commandString[1]));
-  }//if (freq)
-
-  if (commandString[0] == "wavetype") {           //wavetype
+  if (commandString[0] == "help") {                     //help
+    std::cout << "    pitch: change pitch of the note [40 - 90] midi notes" << std::endl;
+    std::cout << "    osc2offset: change the offset of oscillator 2 [-12 - 12] midi notes" << std::endl;
+    std::cout << "    wavetype: change waveType of oscillators [1 - 2] [0 - 2] first parameter: wich oscillator. second parameter: 0 = sine, 1 = square, 2 = saw" << std::endl;
+    std::cout << "    quit: exit program" << std::endl;
+  } else if (commandString[0] == "pitch") {              //pitch
+    if (is_number(commandString[1])) {
+      if (std::stoi(commandString[1]) >= 40 && std::stoi(commandString[1]) <= 90) {
+        subsynth->setPitch(std::stoi(commandString[1]));
+      } else {
+        std::cout << "Error: please choose a pitch between 40 and 90.";
+      }
+    }//if
+  } else if (commandString[0] == "osc2offset") {         //osc2offset
+    if (is_number(commandString[1])) {
+      subsynth->setPitchOffset(std::stoi(commandString[1]));
+    }//if
+  } else if (commandString[0] == "wavetype") {           //wavetype
     if (is_number(commandString[2])) {
       if (commandString[1] == "1") {              //oscillator 1
         subsynth->setWaveType1(std::stoi(commandString[2]));
       } else if (commandString[1] == "2") {       //oscillator 2
         subsynth->setWaveType2(std::stoi(commandString[2]));
       } else { //if
-        std::cout << "Invalid oscillator command for wavetype. Type 'help' to see all of the valid options." << std::endl;
+        std::cout << "Error: Invalid oscillator command for wavetype. Type 'help' to see all of the valid options." << std::endl;
       }//else
     } else {
-      std::cout << commandString[2] << " is not a valid wavetype. Type 'help' to see all of the valid options." << std::endl;
+      std::cout << "Error:" << commandString[2] << " is not a valid wavetype. Type 'help' to see all of the valid options." << std::endl;
     }//else
-  }//if (wavetype)
-
-  if (commandString[0] == "quit") {               //quit
-    running = false;
-  }//if (quit)
+  } else if (commandString[0] == "quit") {               //quit
+      running = false;
+  } else {
+    std::cout << "Error: " << commandString[0] << " is not a valid command. Type 'help' to see all of the valid options." << '\n';
+  } //else
 }//commands
 
 void UI::split(std::string input) {

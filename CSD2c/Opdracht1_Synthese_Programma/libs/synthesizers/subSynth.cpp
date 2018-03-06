@@ -21,10 +21,11 @@ void SubSynth::process(float *outputBuffer, int numSamples) {
     sampleOsc2 = oscPointer2->getSample();       //samples from oscillator 2
     out = (sampleOsc1 + sampleOsc2) * 0.5 * getVolume();  //sum the two oscillators
 
-    //out = filter->filterFunction(out);          //filter output.
-    outputBuffer[i] = out;      //write samples to buffer
+    out = filter->filterFunction(out);          //filter output.
+    outputBuffer[i] = out;                     //write samples to buffer
     oscPointer1->tick();
     oscPointer2->tick();
+    filter->tick();
   }//for
 }//process()
 
@@ -51,6 +52,7 @@ void SubSynth::setWaveType2(int waveType) {
 /**
   Function: Change the wavetype of oscillator 2
 */
+std::cout << waveType << "input" << '\n';
   switch (waveType) {
     case 0:
       oscPointer2 = &sine2;

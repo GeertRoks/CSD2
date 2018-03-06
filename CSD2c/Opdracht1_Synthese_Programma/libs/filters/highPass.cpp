@@ -13,6 +13,5 @@ float HighPass::filterFunction(float currentsample) {
 */
   fillBuffer(currentsample);
   float filtered = (currentsample - filterBuffer[(bufferIndex - 1) % bufferLength])/2.0;
-  tick();
   return filtered;
 }//filterFunction()
