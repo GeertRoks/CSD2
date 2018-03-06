@@ -2,11 +2,9 @@
 #include "synthesizer.h"
 
 Synthesizer::Synthesizer() {
-  std::cout << "Synthesizer || constructor" << std::endl;
 }//Synthesizer()
 
 Synthesizer::~Synthesizer() {
-  std::cout << "Synthesizer || destructor" << std::endl;
 }//~Synthesizer()
 
 void Synthesizer::setPitch(float pitch) {
@@ -51,5 +49,4 @@ float Synthesizer::mtof(int pitch) {
  Refrence: https://newt.phys.unsw.edu.au/jw/notes.html
 */
   return pow(2.0, (pitch - 69.0)/12.0) * 440;
-
 }//mtof()

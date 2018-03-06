@@ -2,11 +2,9 @@
 #include "sineWave.h"
 
 SineWave::SineWave() : Oscillator() {
-  std::cout << "SineWave || constructor" << std::endl;
 }//SineWave()
 
 SineWave::~SineWave() {
-  std::cout << "SineWave || destructor" << std::endl;
 }//~SineWave()
 
 float SineWave::getSample() {

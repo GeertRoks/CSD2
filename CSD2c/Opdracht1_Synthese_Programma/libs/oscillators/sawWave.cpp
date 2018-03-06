@@ -2,11 +2,9 @@
 #include "sawWave.h"
 
 SawWave::SawWave() : Oscillator() {
-  std::cout << "SawWave || Constructor" << std::endl;
 }//SawWave()
 
 SawWave::~SawWave() {
-  std::cout << "SawWave || Destructor" << std::endl;
 }//~SawWave()
 
 float SawWave::getSample() {

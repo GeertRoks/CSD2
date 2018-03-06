@@ -2,11 +2,9 @@
 #include "highPass.h"
 
 HighPass::HighPass() : Filter() {
-  std::cout << "HighPass || constructor" << std::endl;
 }//HighPass()
 
 HighPass::~HighPass() {
-  std::cout << "HighPass || destructor" << std::endl;
 }//~HighPass()
 
 float HighPass::filterFunction(float currentsample) {

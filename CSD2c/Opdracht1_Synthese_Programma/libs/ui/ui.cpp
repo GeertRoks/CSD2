@@ -2,12 +2,10 @@
 #include "ui.h"
 
 UI::UI() {
-  std::cout << "UI || Constructor" << std::endl;
   commandString = new std::string[4];
 }//UI()
 
 UI::~UI() {
-  std::cout << "UI || Destructor" << std::endl;
   delete[] commandString;
   commandString = nullptr;
 }//~UI()

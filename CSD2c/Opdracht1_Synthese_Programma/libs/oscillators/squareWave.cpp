@@ -2,11 +2,9 @@
 #include "squareWave.h"
 
 SquareWave::SquareWave() : Oscillator() {
-  std::cout << "SquareWave || Constructor" << std::endl;
 }//SquareWave()
 
 SquareWave::~SquareWave() {
-  std::cout << "SquareWave || Destructor" << std::endl;
 }//~SquareWave()
 
 float SquareWave::getSample() {

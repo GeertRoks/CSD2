@@ -2,21 +2,17 @@
 #include "subSynth.h"
 
 SubSynth::SubSynth() : Synthesizer() {
-  std::cout << "SubSynth || constructor" << std::endl;
-
   oscPointer1 = &sine1;       //Default sine as wavetype for osc 1.
   oscPointer2 = &square2;     //Default square as wavetype for osc 2.
 }//SubSynth()
 
 SubSynth::~SubSynth() {
-  std::cout << "SubSynth || destructor" << std::endl;
 }//~SubSynth()
 
 void SubSynth::process(float *outputBuffer, int numSamples) {
 /**
   Function: Routing the functions and keep filling the audiobuffer.
 */
-  //std::cout << "SubSynth || process()" << std::endl;
   float sampleOsc1;
   float sampleOsc2;
   float out;

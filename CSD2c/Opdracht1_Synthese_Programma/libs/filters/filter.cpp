@@ -4,12 +4,10 @@
 #include "filter.h"
 
 Filter::Filter() {
-  std::cout << "Filter || constructor" << std::endl;
   filterBuffer = new float[bufferLength];
 }//Filter
 
 Filter::~Filter() {
-  std::cout << "Filter || destructor" << std::endl;
   delete[] filterBuffer;
   filterBuffer = nullptr;
 }//~Filter()
