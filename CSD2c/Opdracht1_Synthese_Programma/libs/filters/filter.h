@@ -22,7 +22,8 @@ public:
 protected:
   float *filterBuffer;                //pointer to filterarray
   unsigned char bufferLength = 8;
-  unsigned char bufferIndex = 0;
+  unsigned char writeIndex = 0;
+  unsigned char readIndex = 7;
 
 private:
   float cutOff = 1000;

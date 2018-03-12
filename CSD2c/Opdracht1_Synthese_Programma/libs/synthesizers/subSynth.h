@@ -37,7 +37,7 @@ private:
   //filters
   LowPass lowpass;
   HighPass highpass;
-  Filter *filter = &lowpass;
+  Filter *filter = &highpass;
 
 }; //class
 
