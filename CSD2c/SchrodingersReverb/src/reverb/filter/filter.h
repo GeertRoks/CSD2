@@ -14,26 +14,22 @@ public:
 
   virtual float filterFunction(float currentsample) =0;
 
-  void setCutOff(float cutOff);
-  void setResonance(float resonance);
-  float getCutOff();
-  float getResonance();
+  void setDelay(unsigned short int delay);
+  unsigned short int getDelay();
 
 protected:
-  float *filterBuffer;                //pointer to filterarray
-  unsigned char bufferLength = 8;
-  unsigned char writeIndex = 0;
-  unsigned char readIndex = 7;
+  unsigned short int delay = 1; //in samples
 
-private:
-  float cutOff = 1000;
-  float resonance = 1;
+  float *filterBuffer;                //pointer to filterarray
+  unsigned short int bufferLength = 8;
+  unsigned short int writeIndex = 0;
+  unsigned short int readIndex = bufferLength - delay;
 
 };//class
 
 #endif//FILTER_H_
 
 /*TODO:
-    - implement some IIR filters.
+    - find good names for the different read and write heads.
 
 */

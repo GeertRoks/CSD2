@@ -34,18 +34,10 @@ void Filter::tick() {
 
 }//tick()
 
-void Filter::setCutOff(float cutOff) {
-  this->cutOff = cutOff;
-}//setCutOff()
+void Comb::setDelay(unsigned short int delay) {
+  this->delay = delay;
+}//getDelay()
 
-void Filter::setResonance(float resonance) {
-  this->resonance = resonance;
-}//setResonance()
-
-float Filter::getCutOff() {
-  return this->cutOff;
-}//getCutOff()
-
-float Filter::getResonance() {
-  return this->resonance;
-}//getResonance()
+unsigned short int Comb::getDelay() {
+  return delay;
+}//getDelay()
