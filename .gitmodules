@@ -4,3 +4,9 @@
 [submodule "CSD2c/CSD2c/SchrodingersReverb/inc/mingw-std-threads"]
 	path = CSD2c/SchrodingersReverb/inc/mingw-std-threads
 	url = https://github.com/meganz/mingw-std-threads.git
+[submodule "CSD2c/HardwareAnalyser/inc/jack_module"]
+	path = CSD2c/HardwareAnalyser/inc/jack_module
+	url = https://github.com/marcdinkum/jack_module.git
+[submodule "CSD2c/HardwareAnalyser/inc/mingw-std-threads"]
+	path = CSD2c/HardwareAnalyser/inc/mingw-std-threads
+	url = https://github.com/meganz/mingw-std-threads.git
