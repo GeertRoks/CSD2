@@ -3,9 +3,11 @@
 
 #include "filter.h"
 
-Filter::Filter() {
+Filter::Filter(unsigned int bufferLength) {
+  this->bufferLength = bufferLength;
+
   filterBuffer = new float[bufferLength];
-  for (int i = 0; i < bufferLength; i++) {
+  for (unsigned int i = 0; i < bufferLength; i++) {
     filterBuffer[i] = 0;
   }//for
 }//Filter
@@ -34,10 +36,10 @@ void Filter::tick() {
 
 }//tick()
 
-void Comb::setDelay(unsigned short int delay) {
+void Filter::setDelay(unsigned int delay) {
   this->delay = delay;
 }//getDelay()
 
-unsigned short int Comb::getDelay() {
+unsigned int Filter::getDelay() {
   return delay;
 }//getDelay()

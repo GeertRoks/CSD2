@@ -4,9 +4,11 @@
 #ifndef FILTER_H_
 #define FILTER_H_
 
+#include <iostream>
+
 class Filter {
 public:
-  Filter();
+  Filter(unsigned int bufferLength);
   ~Filter();
 
   void fillBuffer(float currentsample);
@@ -14,16 +16,16 @@ public:
 
   virtual float filterFunction(float currentsample) =0;
 
-  void setDelay(unsigned short int delay);
-  unsigned short int getDelay();
+  void setDelay(unsigned int delay);
+  unsigned int getDelay();
 
 protected:
-  unsigned short int delay = 1; //in samples
+  unsigned int delay = 1; //in samples
 
   float *filterBuffer;                //pointer to filterarray
-  unsigned short int bufferLength = 8;
-  unsigned short int writeIndex = 0;
-  unsigned short int readIndex = bufferLength - delay;
+  unsigned int bufferLength = 8;
+  unsigned int writeIndex = delay;
+  unsigned int readIndex = 0;
 
 };//class
 

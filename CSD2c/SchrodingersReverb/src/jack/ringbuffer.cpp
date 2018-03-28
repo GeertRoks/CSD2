@@ -20,7 +20,7 @@
 *
 *  File name     : ringbuffer.cpp
 *  System name   : jack_module
-* 
+*
 *  Description   : ring buffer class implementation
 *		   Supports atomic read and write pointer updates and
 *		    blocking and non-blocking modes
@@ -49,7 +49,7 @@
 
 #include <iostream>
 #include "ringbuffer.h"
-#include <unistd.h>
+#include <windows.h>
 #include <string.h> // memcpy
 
 
@@ -123,7 +123,7 @@ unsigned long RingBuffer::push(float *data,unsigned long n)
 
   if(blockingPush){
     while((space=items_available_for_write())<n){ // blocking
-      usleep(blockingNap);
+      Sleep(blockingNap);
     } // while
   } // if
   if(space==0) return 0;
@@ -152,7 +152,7 @@ unsigned long RingBuffer::pop(float *data,unsigned long n)
 
   if(blockingPop){
     while((space=items_available_for_read())<n){ // blocking
-      usleep(blockingNap);
+      Sleep(blockingNap);
     } // while
   } // if
   if(space==0) return 0;
@@ -176,4 +176,3 @@ bool RingBuffer::isLockFree()
 {
   return (tail.is_lock_free() && head.is_lock_free());
 } // isLockFree()
-

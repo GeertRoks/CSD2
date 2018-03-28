@@ -1,3 +1,6 @@
 [submodule "CSD2c/CSD2c/IOtest/inc/mingw-std-threads"]
 	path = CSD2c/CSD2c/IOtest/inc/mingw-std-threads
 	url = https://github.com/meganz/mingw-std-threads.git
+[submodule "CSD2c/CSD2c/SchrodingersReverb/inc/mingw-std-threads"]
+	path = CSD2c/CSD2c/SchrodingersReverb/inc/mingw-std-threads
+	url = https://github.com/meganz/mingw-std-threads.git
